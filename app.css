@@ -115,9 +115,10 @@ body {
   height: 85vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 2.2fr 0.8fr 2fr;
   grid-gap: 30px;
-  padding: 20px;
+  padding: 25px;
+  margin: 0 auto;
 }
 
 .card {
@@ -140,7 +141,7 @@ body {
 }
 
 .timeBlock {
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 1;
   grid-column: 1 / span 2;
   display: flex;
   flex-direction: column;
@@ -150,7 +151,7 @@ body {
 
 .weatherBlock {
   grid-column: 3 / span 2;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -228,12 +229,13 @@ body {
 }
 
 .linksBlock {
-  grid-row: 3 / span 2;
+  grid-row: 3 / span 1;
   grid-column: 1 / span 4;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 1.5rem;
+  justify-content: center;
 }
 
 .linksBlockLeft {
@@ -324,6 +326,7 @@ body {
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 3rem;
   padding: 0.4rem;
+  justify-items: center;
 }
 
 .list {
@@ -331,6 +334,10 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  max-height: 100%;
+  overflow: hidden;
+  padding: 1.8rem 1.2rem;
+  width: 95%;
 }
 
 .list__1 {
@@ -344,7 +351,7 @@ body {
 }
 
 .listIcon {
-  margin-bottom: 2vh;
+  margin-bottom: 2.5vh;
   color: var(--fg);
   width: var(--icon);
   height: var(--icon);
@@ -354,12 +361,12 @@ body {
   text-decoration: none;
   font-size: var(--fg-list);
   color: var(--fg);
-  margin-top: 1vh;
+  margin: 1.2vh auto 0;
   padding: 8px 12px;
   border-radius: 5px;
   font-weight: bold;
   text-align: center;
-  width: 80%;
+  width: 85%;
 }
 
 .listItem:hover {
@@ -368,12 +375,81 @@ body {
   /* Use background for high contrast against accent */
 }
 
+/* Search bar styling */
+.searchRow {
+  position: relative;
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.searchCard {
+  width: 70%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+}
+
+.searchCard form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 18px 22px;
+  font-size: calc(var(--fg-secondary) * 0.8);
+  color: var(--fg);
+  background-color: var(--cards);
+  border: 2px solid var(--cards);
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  font-family: "JetBrains Mono", sans-serif;
+}
+
+.searchInput:focus {
+  border-color: var(--accent);
+}
+
+.searchButton {
+  height: 100%;
+  padding: 8px 12px;
+  color: var(--fg);
+  background-color: var(--cards);
+  border: 2px solid var(--cards);
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchButton:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--background);
+}
+
+.searchButton svg {
+  width: var(--icon);
+  height: var(--icon);
+}
+
 /* M E D I A - Q U E R I E S */
 
 @media only screen and (max-width: 68.75em) {
   .container {
-    grid-gap: 20px;
+    grid-gap: 15px;
     padding: 40px;
+    grid-template-rows: 2fr 1fr 2fr;
   }
 
   .timeBlock {
@@ -387,6 +463,20 @@ body {
 
   #greetings {
     font-size: var(--fg-secondary);
+  }
+
+  .searchRow {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 4;
+    width: 100%;
+  }
+
+  .searchCard {
+    width: 100%;
+  }
+
+  .linksBlock {
+    grid-row: 3 / span 1;
   }
 
   .linksBlockRight {
