@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;600;700&display=swap');
+/* Font Import */
+
+:root {
+  /* --- Gruvbox Light Theme --- */
+
+  /* Font Size (Remains unchanged) */
+  --fg-primary: 12vh;
+  /* Time and Greetings */
+  --fg-secondary: 3vh;
+  /* Greetings and Weather widget */
+  --fg-date: 8vh;
+  /* Date */
+  --fg-list: 2vh;
+  /* Links List */
+  --icon: 3vh;
+  /* Icon Size */
+
+  /* Fonts Color (Gruvbox Light) */
+  --fg: #3c3836;
+  /* Gruvbox Light fg1 */
+  --sfg: #7c6f64;
+  /* Gruvbox Light grey */
+
+  /* Light Colors (Gruvbox Light) */
+  --accent: #458588;
+  /* Gruvbox Blue (used consistently for accent) */
+  --background: #fbf1c7;
+  /* Gruvbox Light bg0 */
+  --cards: #ebdbb2;
+  /* Gruvbox Light bg1 */
+
+  /* Image background (Gruvbox Light) */
+  --imgbg: url(assets/background.jpg);
+  /* Image URL (Keep user's image) */
+  --imgcol: linear-gradient(rgba(251, 241, 199, 0.7),
+      /* Gruvbox Light bg0 with 70% opacity */
+      rgba(251, 241, 199, 0.7));
+  /* Filter color */
+}
+
+.darktheme {
+  /* --- Gruvbox Dark Theme --- */
+
+  /* Dark Colors (Gruvbox Dark) */
+  --accent: #83a598;
+  /* Gruvbox Dark Bright Blue (adjust if needed, e.g., #458588) */
+  --background: #282828;
+  /* Gruvbox Dark bg0 */
+  --cards: #3c3836;
+  /* Gruvbox Dark bg1 */
+
+  /* Fonts Color (Gruvbox Dark) */
+  --fg: #ebdbb2;
+  /* Gruvbox Dark fg1 */
+  --sfg: #a89984;
+  /* Gruvbox Dark grey */
+
+  /* Image background (Gruvbox Dark) */
+  --imgcol: linear-gradient(rgba(40, 40, 40, 0.85),
+      /* Gruvbox Dark bg0 with 85% opacity */
+      rgba(40, 40, 40, 0.85));
+  /* Filter color */
+}
+
+/* S T Y L E S */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'JetBrains Mono', sans-serif;
+  transition: 0.2s ease-in-out;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notransition {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+.withImageBackground {
+  background-image: var(--imgcol), var(--imgbg);
+  background-size: cover;
+}
+
+#themeButton {
+  position: absolute;
+  margin: 2em 2em 0 0;
+  right: 0;
+  top: 0;
+  color: var(--fg);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  /* Use transparent instead of specific hex */
+}
+
+#themeIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.container {
+  width: 145vh;
+  height: 85vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 30px;
+  padding: 20px;
+}
+
+.card {
+  background-color: var(--cards);
+  /* Optional: Use Gruvbox subtle shadow or remove */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  box-shadow: none;
+  /* Gruvbox often avoids heavy shadows */
+  border-radius: 5px;
+  /* Keep border-radius */
+}
+
+.card:hover {
+  /* Optional: Subtle brightness/contrast change on hover instead of transform/shadow */
+  /* filter: brightness(95%); */
+  transform: translateY(-0.2rem);
+  /* Keep original hover effect if preferred */
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2);
+  /* Keep original hover effect if preferred */
+}
+
+.timeBlock {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.weatherBlock {
+  grid-column: 3 / span 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#time {
+  font-size: var(--fg-primary);
+  font-weight: bolder;
+  color: var(--fg);
+}
+
+#date {
+  font-size: var(--fg-date);
+  font-weight: bold;
+  color: var(--fg);
+}
+
+#day {
+  margin-left: 1.5rem;
+}
+
+#greetings {
+  font-size: var(--fg-secondary);
+  color: var(--fg);
+  /* Uses primary foreground, consider --sfg if contrast is needed */
+}
+
+.weatherIcon img {
+  width: 70px;
+  height: 70px;
+  /* Consider filter to match theme if icons are single color */
+  /* filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg); */
+}
+
+.weatherValue p {
+  font-size: var(--fg-secondary);
+  font-weight: bolder;
+  margin-left: 15px;
+  color: var(--fg);
+}
+
+.weatherDescription p {
+  font-size: var(--fg-secondary);
+  margin-left: 15px;
+  color: var(--fg);
+  /* Uses primary foreground, consider --sfg if contrast is needed */
+}
+
+.reduceGap {
+  grid-gap: 2rem !important;
+}
+
+.removeGap {
+  grid-gap: 0 !important;
+}
+
+.linksBlock {
+  grid-row: 3 / span 2;
+  grid-column: 1 / span 4;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 1.5rem;
+}
+
+.linksBlockLeft {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 2;
+}
+
+.linksBlockRight {
+  grid-row: 1 / span 2;
+  grid-column: 3 / span 2;
+}
+
+.buttonsContainer {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 30px;
+  padding: 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 5px;
+  /* Add border-radius to match cards */
+}
+
+.buttonIcon {
+  width: var(--icon);
+  height: var(--icon);
+  color: var(--fg);
+}
+
+.button__1 {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.button__2 {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.button__3 {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.button__4 {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.button__5 {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.button__6 {
+  grid-row: 2;
+  grid-column: 3;
+}
+
+.button:hover {
+  background-color: var(--accent);
+}
+
+/* Ensure sufficient contrast for icon/text on hover */
+.button:hover svg,
+.button:hover .buttonIcon
+
+/* Target potential icon class */
+  {
+  stroke: var(--background);
+  /* Use background for high contrast against accent */
+  color: var(--background);
+  /* Use background for high contrast against accent */
+}
+
+.listsContainer {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 3rem;
+  padding: 0.4rem;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.list__1 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.list__2 {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.listIcon {
+  margin-bottom: 2vh;
+  color: var(--fg);
+  width: var(--icon);
+  height: var(--icon);
+}
+
+.listItem {
+  text-decoration: none;
+  font-size: var(--fg-list);
+  color: var(--fg);
+  margin-top: 1vh;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  width: 80%;
+}
+
+.listItem:hover {
+  background-color: var(--accent);
+  color: var(--background);
+  /* Use background for high contrast against accent */
+}
+
+/* M E D I A - Q U E R I E S */
+
+@media only screen and (max-width: 68.75em) {
+  .container {
+    grid-gap: 20px;
+    padding: 40px;
+  }
+
+  .timeBlock {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 4;
+  }
+
+  .weatherBlock {
+    display: none;
+  }
+
+  #greetings {
+    font-size: var(--fg-secondary);
+  }
+
+  .linksBlockRight {
+    display: none;
+  }
+
+  .linksBlockLeft {
+    grid-column: 1 / span 4;
+  }
+
+  .button {
+    /* Adjust padding as needed for smaller screens */
+    padding: 10px;
+    /* Example adjustment */
+    grid-gap: 2vw;
+    /* Example adjustment */
+  }
+
+  /* Remove large horizontal padding from original query */
+  /* padding-left: 100px; */
+  /* padding-right: 100px; */
+}
