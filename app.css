@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;600;700&display=swap");
 /* Font Import */
 
 :root {
@@ -15,31 +15,6 @@
   /* Links List */
   --icon: 3vh;
   /* Icon Size */
-
-  /* Fonts Color (Gruvbox Light) */
-  --fg: #3c3836;
-  /* Gruvbox Light fg1 */
-  --sfg: #7c6f64;
-  /* Gruvbox Light grey */
-
-  /* Light Colors (Gruvbox Light) */
-  --accent: #458588;
-  /* Gruvbox Blue (used consistently for accent) */
-  --background: #fbf1c7;
-  /* Gruvbox Light bg0 */
-  --cards: #ebdbb2;
-  /* Gruvbox Light bg1 */
-
-  /* Image background (Gruvbox Light) */
-  --imgbg: url(assets/background.jpg);
-  /* Image URL (Keep user's image) */
-  --imgcol: linear-gradient(rgba(251, 241, 199, 0.7),
-      /* Gruvbox Light bg0 with 70% opacity */
-      rgba(251, 241, 199, 0.7));
-  /* Filter color */
-}
-
-.darktheme {
   /* --- Gruvbox Dark Theme --- */
 
   /* Dark Colors (Gruvbox Dark) */
@@ -57,10 +32,34 @@
   /* Gruvbox Dark grey */
 
   /* Image background (Gruvbox Dark) */
-  --imgcol: linear-gradient(rgba(40, 40, 40, 0.85),
-      /* Gruvbox Dark bg0 with 85% opacity */
-      rgba(40, 40, 40, 0.85));
-  /* Filter color */
+  --imgcol: linear-gradient(
+    rgba(40, 40, 40, 0.85),
+    /* Gruvbox Dark bg0 with 85% opacity */ rgba(40, 40, 40, 0.85)
+  ); /* Filter color */
+}
+
+.lighttheme {
+  /* Fonts Color (Gruvbox Light) */
+  --fg: #3c3836;
+  /* Gruvbox Light fg1 */
+  --sfg: #7c6f64;
+  /* Gruvbox Light grey */
+
+  /* Light Colors (Gruvbox Light) */
+  --accent: #458588;
+  /* Gruvbox Blue (used consistently for accent) */
+  --background: #fbf1c7;
+  /* Gruvbox Light bg0 */
+  --cards: #ebdbb2;
+  /* Gruvbox Light bg1 */
+
+  /* Image background (Gruvbox Light) */
+  --imgbg: url(assets/background.jpg);
+  /* Image URL (Keep user's image) */
+  --imgcol: linear-gradient(
+    rgba(251, 241, 199, 0.7),
+    /* Gruvbox Light bg0 with 70% opacity */ rgba(251, 241, 199, 0.7)
+  );
 }
 
 /* S T Y L E S */
@@ -69,7 +68,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'JetBrains Mono', sans-serif;
+  font-family: "JetBrains Mono", sans-serif;
   transition: 0.2s ease-in-out;
 }
 
@@ -310,8 +309,7 @@ body {
 .button:hover svg,
 .button:hover .buttonIcon
 
-/* Target potential icon class */
-  {
+/* Target potential icon class */ {
   stroke: var(--background);
   /* Use background for high contrast against accent */
   color: var(--background);
